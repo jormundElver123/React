@@ -52,6 +52,7 @@ export default function TextForm(props) {
     let text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    document.getSelection().removeAllRanges();
     if(text.length === 0)
     {
       props.showAlert("Text box is empty", "danger");
@@ -90,8 +91,8 @@ export default function TextForm(props) {
       </div>
       <div className="container my-2" style = {{color:props.mode === 'dark' ?'white':'black'}}>
         <h1>Your Text Summary</h1>
-        <p>{text.length===0 ? '0' : text.split(" ").length} words and {text.length} characters.</p>
-        <p>{0.008 * text.split(" ").length} Minutes Read</p>
+        <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters.</p>
+        <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes Read</p>
         <h3>Preview</h3>
         <p>{text.length>0 ? text : 'Enter something in the textbox above'}</p>
       </div>

@@ -44,6 +44,12 @@ export default function Navbar(props) {
               Search
             </button>
           </form> */}
+          <div className="d-flex">
+            <div className="bg-primary rounded mx-2 my-2" onClick={()=>{props.customPalette('primary')}}style={{height: '15px', width: '15px', cursor:'pointer'}}></div>
+            <div className="bg-secondary rounded mx-2 my-2" onClick={()=>{props.customPalette('secondary')}} style={{height: '15px', width: '15px', cursor:'pointer'}}></div>
+            <div className="bg-danger rounded mx-2 my-2" onClick={()=>{props.customPalette('danger')}} style={{height: '15px', width: '15px', cursor:'pointer'}}></div>
+            <div className="bg-success rounded mx-2 my-2" onClick={()=>{props.customPalette('success')}} style={{height: '15px', width: '15px', cursor:'pointer'}}></div>
+          </div>
           <div className="form-check form-switch">
             <input
               className="form-check-input"
@@ -53,7 +59,7 @@ export default function Navbar(props) {
               onClick={props.toggleMode}
             />
             <label className={`form-check-label text-${props.mode === 'light' ?'dark':'light'}`} htmlFor="flexSwitchCheckDefault">
-              {props.mode === 'light' ? 'Light Mode' : 'Dark Mode'}
+            Toggle Mode
             </label>
           </div>
         </div>
